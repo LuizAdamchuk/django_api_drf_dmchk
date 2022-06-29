@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    container_name: sfp-2022-app
+    command: bash -c "python manage.py crontab add && python manage.py migrate && service cron start && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    container_name: sfp-2022-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=spaceflight
+      - POSTGRES_DB=postgres
