@@ -16,4 +16,3 @@ class ArticlesViewSet(viewsets.ModelViewSet):
         elif start is not None:
             queryset = queryset.all()[int(start):int(start)+30]
         return queryset
-

@@ -19,3 +19,6 @@ class Article(models.Model):
 class CronJob(models.Model):
     quantity = models.IntegerField()
     runAt = models.DateField(("runAt"), default=datetime.date.today)
+    
+    def __str__(self) -> str:
+        return "{quantity} - {runAt}".format(quantity=self.quantity,runAt=self.runAt)
