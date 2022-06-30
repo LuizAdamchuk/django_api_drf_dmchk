@@ -22,15 +22,7 @@ git clone https://github.com/LuizAdamchuk/django_api_drf_dmchk.git
 cd django_api_drf_dmchk
 ```
 
-- Passo 2 _(Cria o .env com os comandos abaixo e cadastre suas credenciais)_:
-
-```
-cd config
-touch .env
-echo "DATABASE_NAME=\nDATABASE_USER=\nDATABASE_PASS=\nMAILTRAP_HOST=\nMAILTRAP_PORT=\nMAILTRAP_HOST_USER=\nMAULTRAP_HOST_PASS=\n" > .env
-```
-
-- Passo 3:
+- Passo 2:
 
 ```
 docker-compose up -d
@@ -46,6 +38,20 @@ docker-compose up -d
 
 ```
 docker-compose down
+```
+
+- Mude as credencias default _(Cria o .env com os comandos abaixo e cadastre suas credenciais)_:
+
+```
+cd config
+touch .env
+echo "DATABASE_NAME=\nDATABASE_USER=\nDATABASE_PASS=\nMAILTRAP_HOST=\nMAILTRAP_PORT=\nMAILTRAP_HOST_USER=\nMAULTRAP_HOST_PASS=\n" > .env
+```
+
+_Descomente no arquivo Dockerfile alinha:_
+
+```
+# COPY ./config/.env ./config
 ```
 
 ### URLs:
