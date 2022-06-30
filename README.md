@@ -57,6 +57,8 @@ _Descomente no arquivo Dockerfile alinha:_
 ### URLs:
 
 - http://localhost:8000/
+- http://localhost:8000/admin/
+- http://localhost:8000/blog/
 
 ### INSOMNIA
 
