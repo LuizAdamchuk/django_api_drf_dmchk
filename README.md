@@ -70,6 +70,6 @@ _Descomente no arquivo Dockerfile alinha:_
 
 - [x] Docker configurado no Projeto para facilitar o Deploy da equipe de DevOps;
 
-- [ ] Configurar um sistema de alerta se houver algum falha durante a sincronização dos artigos;
+- [x] Configurar um sistema de alerta se houver algum falha durante a sincronização dos artigos;
 
 - [x] Descrever a documentação da API;
