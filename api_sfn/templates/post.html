@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div class="row g-5">
+  <div class="col-md-8">
+    <article class="blog-post">
+      <h2 class="blog-post-title mb-1">{{article.title}}</h2>
+      <img
+        style="padding: 8px 16px"
+        src="{{article.imageUrl}}"
+        width="640"
+        height="384"
+      />
+      <p style="padding: 4px 16px" class="blog-post-meta">
+        {{ article.publishedAt|date:'d, M Y' }} -
+        <a href="{{article.url}}">{{article.newsSite}}</a>
+      </p>
+      {{article.summary|safe}}
+    </article>
+    <a href="/blog">Voltar</a>
+  </div>
+  {% endblock %}
+</div>
