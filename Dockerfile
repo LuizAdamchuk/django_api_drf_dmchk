@@ -11,6 +11,7 @@ WORKDIR /code
 
 # Install dependencies
 COPY ./requirements.txt .
+COPY ./config/.env ./config
 RUN apt-get -y update && apt-get install -y cron && touch /var/log/cron.log && pip3 install --upgrade pip
 RUN pip install -r requirements.txt
 

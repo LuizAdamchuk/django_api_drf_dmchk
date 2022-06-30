@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,9 +84,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "spaceflight",
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASE_USER'),
+        "PASSWORD": env('DATABASE_PASS'),
         "HOST": "db",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
     }
@@ -137,9 +142,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100
 }
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_PORT = '2525'
-EMAIL_HOST_USER = '078d11f1e7e0ed'
-EMAIL_HOST_PASSWORD = '6990ae8ab905c6'
+EMAIL_HOST = env('MAILTRAP_HOST')
+EMAIL_PORT = env('MAILTRAP_PORT')
+EMAIL_HOST_USER = env('MAILTRAP_HOST_USER')
+EMAIL_HOST_PASSWORD = env('MAULTRAP_HOST_PASS')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

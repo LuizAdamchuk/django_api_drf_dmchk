@@ -41,7 +41,8 @@ def multipleRequests(total):
 
 def my_scheduled_job():
     try:
-        raise ValueError('A very specific bad thing happened.')
+        # ATENÇAO - Para testar o alerta de email descomentar linha abaixo
+        # raise ValueError('A very specific bad thing happened.')
         totalArticlesSFNAPI = getCount()
         totalArticlesDMCHKAPI =CronJob.objects.last().quantity if CronJob.objects.last() else 0
         if totalArticlesDMCHKAPI  != totalArticlesSFNAPI:
