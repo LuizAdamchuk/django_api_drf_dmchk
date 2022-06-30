@@ -136,3 +136,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_PORT = '2525'
+EMAIL_HOST_USER = '078d11f1e7e0ed'
+EMAIL_HOST_PASSWORD = '6990ae8ab905c6'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

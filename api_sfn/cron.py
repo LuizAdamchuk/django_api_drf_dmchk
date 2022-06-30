@@ -1,5 +1,6 @@
 import requests
 from api_sfn.models import CronJob, Article
+from django.core.mail import send_mail
 
 
 def mapperResponse(data):
@@ -39,16 +40,26 @@ def multipleRequests(total):
             continue
 
 def my_scheduled_job():
-    totalArticlesSFNAPI = getCount()
-    totalArticlesDMCHKAPI =CronJob.objects.last().quantity if CronJob.objects.last() else 0
-    if totalArticlesDMCHKAPI  != totalArticlesSFNAPI:
-        requests = totalArticlesSFNAPI - totalArticlesDMCHKAPI
-        CronJob.objects.create(quantity=totalArticlesSFNAPI)
-        if requests > 300:
-            multipleRequests(totalArticlesSFNAPI)
-        else:
-            articlesList = paginationList(1, requests)
-            Article.objects.bulk_create(articlesList)
+    try:
+        raise ValueError('A very specific bad thing happened.')
+        totalArticlesSFNAPI = getCount()
+        totalArticlesDMCHKAPI =CronJob.objects.last().quantity if CronJob.objects.last() else 0
+        if totalArticlesDMCHKAPI  != totalArticlesSFNAPI:
+            requests = totalArticlesSFNAPI - totalArticlesDMCHKAPI
+            CronJob.objects.create(quantity=totalArticlesSFNAPI)
+            if requests > 300:
+                multipleRequests(totalArticlesSFNAPI)
+            else:
+                articlesList = paginationList(1, requests)
+                Article.objects.bulk_create(articlesList)
+    except:
+        send_mail(
+            'Alert - CRON - my_scheduled_job',
+            'Error to get API data Spaceflightnews',
+            'backend@system.com',
+            ['team@backend.com'],
+            fail_silently=False,
+        )
 
 
 
