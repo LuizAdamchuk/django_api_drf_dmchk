@@ -32,20 +32,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-- Mude as credencias default _(Cria o .env com os comandos abaixo e cadastre suas credenciais)_:
-
-```
-cd config
-touch .env
-echo "DATABASE_NAME=\nDATABASE_USER=\nDATABASE_PASS=\nMAILTRAP_HOST=\nMAILTRAP_PORT=\nMAILTRAP_HOST_USER=\nMAULTRAP_HOST_PASS=\n" > .env
-```
-
-_Descomente no arquivo Dockerfile na linha:_
-
-```
-# COPY ./config/.env ./config
-```
-
 # POKE-API DONE
 
 - http://localhost:8000/pokemon/
@@ -109,3 +95,19 @@ python manage.py createsuperuser
 ```
 
 acessar a url http://localhost:8000/admin/ colocar as credencias criadas
+
+### Mudar credencias do banco/mailtrap
+
+- Mude as credencias default _(Cria o .env com os comandos abaixo e cadastre suas credenciais)_:
+
+```
+cd config
+touch .env
+echo "DATABASE_NAME=\nDATABASE_USER=\nDATABASE_PASS=\nMAILTRAP_HOST=\nMAILTRAP_PORT=\nMAILTRAP_HOST_USER=\nMAULTRAP_HOST_PASS=\n" > .env
+```
+
+_Descomente no arquivo Dockerfile na linha:_
+
+```
+# COPY ./config/.env ./config
+```
