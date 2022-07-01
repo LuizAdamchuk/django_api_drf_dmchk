@@ -62,7 +62,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path.joinpath(BASE_DIR,'templates')],
+        'DIRS': [Path.joinpath(BASE_DIR,'templates'), Path.joinpath(BASE_DIR,'api_poke/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
